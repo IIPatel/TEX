@@ -1,10 +1,12 @@
+
+import io
+import base64
 import streamlit as st
 import os
 from together import Together
 from PIL import Image
 import requests
 from io import BytesIO
-import base64
 
 # Set page config
 st.set_page_config(page_title="TEX: TelecomAI Assistant", page_icon="📡", layout="wide")
