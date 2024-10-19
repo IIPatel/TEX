@@ -49,19 +49,48 @@ def process_text_query(query, model="meta-llama/Llama-3.2-3B-Instruct-Turbo"):
     return response.choices[0].message.content
 
 def process_image_query(image_base64, query, model="meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo"):
+    system_message = f"You are an expert AI assistant in telecommunications infrastructure analysis. Your task is to analyze {image_base64} and provide detailed, actionable insights for telecom engineers. Base your analysis solely on the information visible in the image."
+
+    example_analysis = """
+Example analysis for a satellite image:
+1. Terrain: Hilly suburban area with dense vegetation to the north.
+2. Infrastructure: Existing cell tower visible in the southeast quadrant.
+3. Population density: Medium density housing in the central and western areas.
+4. Optimal 5G small cell locations:
+   a) Intersection of main roads in the central area for maximum coverage.
+   b) Near the commercial district in the northeast for high traffic areas.
+   c) Southern residential area to fill coverage gaps.
+5. Considerations: Utilize existing utility poles where possible to minimize new construction.
+    """
+
+    structured_query = f"""
+Analyze the provided {image_base64} and address the following points:
+1. Describe the key features of the landscape or equipment visible in the image.
+2. Identify any existing telecommunications infrastructure.
+3. For satellite imagery: Suggest 3-5 optimal locations for new 5G small cells, explaining your reasoning.
+   For equipment photos: Identify any visible issues or potential upgrades, providing specific recommendations.
+4. Discuss any challenges or special considerations for implementation based on what you see in the image.
+5. Provide 2-3 actionable next steps for the telecom engineering team based on your analysis.
+
+{query}
+
+Remember to base your analysis solely on what you can see in the image, and provide specific, detailed insights relevant to telecommunications infrastructure planning or maintenance.
+"""
+
     response = client.chat.completions.create(
         model=model,
         messages=[
-            {"role": "system", "content": "You are an AI assistant specialized in analyzing telecommunications infrastructure and satellite imagery."},
+            {"role": "system", "content": system_message},
+            {"role": "user", "content": "Here's an example of the kind of analysis I'm looking for:" + example_analysis},
             {
                 "role": "user",
                 "content": [
-                    {"type": "text", "text": query},
+                    {"type": "text", "text": structured_query},
                     {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{image_base64}"}}
                 ]
             },
         ],
-        max_tokens=300,
+        max_tokens=500,
         temperature=0.7
     )
     return response.choices[0].message.content
