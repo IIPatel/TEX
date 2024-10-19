@@ -40,14 +40,14 @@ TEX: Telecom AI Assistant is a versatile Streamlit application designed to assis
    ```
 ## How It Works 🧠
 
-### Text Query
+### Text Query 🔤❓ 
 
 1. **Select "Text Query"**: Choose the "Text Query" option from the task type radio buttons.
 2. **Enter Your Query**: Type your query into the text input field.
 3. **Process the Query**: Click the "Process Query" button to submit your query.
 4. **Receive Response**: The app processes your query using the Llama 3.2 model and displays a detailed response.
 
-### Document Analysis
+### Document Analysis 📄 
 
 1. **Select "Document Analysis"**: Choose the "Document Analysis" option from the task type radio buttons.
 2. **Choose Document Type**: Select the type of document you want to analyze (Regulatory Document, Contract, Customer Inquiry).
@@ -55,7 +55,7 @@ TEX: Telecom AI Assistant is a versatile Streamlit application designed to assis
 4. **Analyze Document**: Click the "Analyze Document" button to submit the document for analysis.
 5. **View Analysis**: The app processes the document using the Llama 3.2 model and provides a detailed analysis, highlighting key points and insights.
 
-### Image Analysis
+### Image Analysis 🌅
 
 1. **Select "Image Analysis"**: Choose the "Image Analysis" option from the task type radio buttons.
 2. **Choose Image Type**: Select the type of image you want to analyze (Satellite Imagery, Equipment Photo).
