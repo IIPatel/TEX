@@ -1,4 +1,3 @@
-
 import io
 import base64
 import streamlit as st
@@ -9,7 +8,7 @@ import requests
 from io import BytesIO
 
 # Set page config
-st.set_page_config(page_title="TEX: TelecomAI Assistant", page_icon="📡", layout="wide")
+st.set_page_config(page_title="TEX: Telecom AI Assistant", page_icon="📡", layout="wide")
 
 # Custom CSS to improve the app's appearance
 st.markdown("""
@@ -76,13 +75,13 @@ def image_to_base64(image):
 # Sidebar
 with st.sidebar:
     
-    st.title("TEX: TelecomAI Assistant")
+    st.title("TEX: Telecom AI Assistant")
     st.info("This AI-powered assistant helps with various telecommunication tasks, including text analysis, document processing, and image analysis.")
     st.markdown("---")
     st.write("Powered by Llama 3.2 models")
 
 # Main content
-st.title("Welcome to TEX, a TelecomAI Assistant App")
+st.title("Welcome to TEX, a Telecom AI Assistant App")
 
 task_type = st.radio("Select Task Type", ["Text Query", "Document Analysis", "Image Analysis"])
 
@@ -102,7 +101,7 @@ if task_type == "Text Query":
 elif task_type == "Document Analysis":
     st.header("Document Analysis")
     document_type = st.selectbox("Select Document Type", ["Regulatory Document", "Contract", "Customer Inquiry"])
-    text_input = st.text_area("Enter the document text:")
+    text_input = st.text_area("Enter the relevant document text:")
     if st.button("Analyze Document", key="doc_analysis"):
         if text_input:
             with st.spinner("Analyzing..."):
