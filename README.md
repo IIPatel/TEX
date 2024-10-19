@@ -17,8 +17,8 @@ TEX: Telecom AI Assistant is a versatile Streamlit application designed to assis
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/tex-telecomai-assistant.git
-
+   git clone https://github.com/IIPatel/TEX.git
+   ```
 
 ### How to run it on your own machine
 
